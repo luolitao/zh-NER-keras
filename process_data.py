@@ -27,7 +27,7 @@ def _parse_data(fh):
     #  you have to use recorsponding instructions
 
     if platform.system() == 'Windows':
-        split_text = '\r\n'
+        split_text = '\n'
     else:
         split_text = '\n'
 
