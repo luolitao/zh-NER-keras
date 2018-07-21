@@ -22,17 +22,17 @@ def load_data():
     return train, test, (vocab, chunk_tags)
 
 
-def _parse_data(fh):
+def _parse_data(fh, file_type = 'Unix'):
     #  in windows the new line is '\r\n\r\n' the space is '\r\n' . so if you use windows system,
     #  you have to use recorsponding instructions
 
-    if platform.system() == 'Windows':
-        split_text = '\n'
+    if file_type == 'Windows':
+        split_text = '\r\n'
     else:
         split_text = '\n'
 
     string = fh.read().decode('utf-8')
-    data = [[row.split() for row in sample.split(split_text)] for
+    data = [[row.split(' ') for row in sample.split(split_text)] for
             sample in
             string.strip().split(split_text + split_text)]
     fh.close()
